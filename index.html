@@ -53,16 +53,25 @@
             <div class="total">
                 <p>Total cost R<span x-text="(small * 48.99 + medium * 78.99 + large * 114.99).toFixed(2)">0.00</span></p>
             </div>
+            <button class="check">
+                Check out
+            </button>
 
             <div class="boxes">
-                <template x-if="small * 48.99 + medium * 78.99 + large * 114.99>0">
+                <!-- <template x-if="small * 48.99 + medium * 78.99 + large * 114.99>0">
                     <button class="check">
                         Check out
                     </button>
-                </template>
+                </template> -->
                 
-                <div class="boxs"  x-data="{ title: 'Please enter an amount in the input box' }">
-                    <p class="reply" x-text="title"> </p>
+                <div class="boxs"  x-data="{ title: '' }">
+                    <!-- <p class="reply" x-text="title"> </p> -->
+                    <template x-if="small * 48.99 + medium * 78.99 + large * 114.99>title">
+                        <p class="reply"> insufficient funds</p>
+                    </template> 
+                    <template x-if="small * 48.99 + medium * 78.99 + large * 114.99<title">
+                        <p class="reply"> successful purchase</p>
+                    </template>
                     <div>
                         <label for="theMessage">Payment amount:</label>
                         <input type="number" class="buyBtn"
