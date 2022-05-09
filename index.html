@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Pizza</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div x-data="{small:0, medium:0, large:0}">
+        <div class="heading">
+            <h1>Perfect Pizza</h1>
+        </div>
+        <div class="ShoppingCart box" x-show="small >= 1 || medium >= 1 || large >= 1">
+            <h2>Shopping Cart</h2>
+            <div class="small" x-show="small >= 1">
+                <p>
+                    Small
+                <div>
+                    <span x-text="small"></span>
+                    <button class="button" @click="small++">+</button>
+                    <button class="button" @click="small--">-</button>
+                    R<span x-text="(small * 48.99).toFixed(2)"></span>
+                </div>
+                </p>
+            </div>
+            <div class="medium" x-show="medium >= 1"> 
+                <p>
+                    Medium
+                <div >
+                    <span x-text="medium"></span>
+                    <button class="button" @click="medium++">+</button>
+                    <button class="button" @click="medium--">-</button>
+                    R<span x-text="(medium * 78.99).toFixed(2)"></span>
+
+                </div>
+                </p>
+            </div>
+            <div class="large" x-show="large >= 1">
+                <p>
+                    Large
+                <div>
+                    <span x-text="large"></span>
+                    <button class="button" @click="large++">+</button>
+                    <button class="button" @click="large--">-</button>
+                    R<span x-text="(large * 114.99).toFixed(2)"></span>
+                </div>
+                </p>
+            </div>
+            <div class="total">
+                <p>Total cost R<span x-text="(small * 48.99 + medium * 78.99 + large * 114.99).toFixed(2)">0.00</span></p>
+            </div>
+
+            <div class="boxes">
+                <template x-if="small * 48.99 + medium * 78.99 + large * 114.99>0">
+                    <button class="check">
+                        Check out
+                    </button>
+                </template>
+                
+                <div class="boxs"  x-data="{ title: 'Please enter an amount in the input box' }">
+                    <p class="reply" x-text="title"> </p>
+                    <div>
+                        <label for="theMessage">Payment amount:</label>
+                        <input type="number" class="buyBtn"
+                            placeholder="Enter your amount" x-model="title">
+                    </div>
+
+                    <br>
+
+                    <button class="payBtn buyBtn">
+                        Pay
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pizzas">
+            <div class="box small-pizza">
+                <h2>Small Pizza</h2>
+                <img src="Pizza1-.png" alt="A magarita pizza" width="215">
+                <h3>R48.99</h3>
+                <p>
+                    A magarita pizza. With a diameter of 20cm
+                </p>
+                <br>
+                <div class="buy">
+                    <button @click="small++" class="buyBtn">Buy</button>
+                </div>
+
+            </div>
+            <div class="box meduim-pizza">
+                <h2>Medium Pizza</h2>
+                <img src="Pizza2-.png" alt="A magarita pizza with mushroom, perparoni,greenpaper,olive" width="215">
+                <h3>R78.99</h3>
+                <p>
+                    A magarita pizza with toppings of olives, greenpapper,tomato and mushrooms
+                </p>
+                <div class="buy">
+                    <button @click="medium++" class="buyBtn">Buy</button>
+                </div>
+            </div>
+            <div class="box large-pizza">
+                <h2>Large Pizza</h2>
+                <img src="Pizza3-.png" alt="A pizza with toppings of your choice comes with plate" width="215">
+                <h3>R114.99</h3>
+                <p>
+                    Pizza slices with a variety of toppings. Mix and match to your owe liking
+                </p>
+                <div class="buy">
+                    <button @click="large++" class="buyBtn">Buy</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box footer">
+            <h3>Contact details</h3>
+
+            <ul class="social">
+                <li>
+                    <a href="https://www.facebook.com" target="_blank"><img src="5b8b9c0d8b8dbc20c53eed722860f42e.png"
+                            alt="Facebook logo" width="50"></a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com" target="_blank"><img src="225132.png" alt="Twittwe logo"
+                            width="50"></a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com" target="_blank"><img src="insta-logo.png" alt="Instagram logo"
+                            width="50"></a>
+                </li>
+                <li>
+                    <a href="011 899 7999" target="_blank"><img src="phone-1912209-1617678.png" alt="Phone logo"
+                            width="50"></a>
+                </li>
+                <li>
+                    <a href="https://www.google.com " target="_blank"><img
+                            src="uploads_gmail_logo_gmail_logo_PNG12-364x364.png" alt="Email logo" width="50"></a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</body>
+
+</html>
