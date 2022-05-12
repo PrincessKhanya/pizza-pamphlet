@@ -65,12 +65,17 @@
                         <div x-data="{ show: false }">
                             <div x-show.transition="show">
                                 <template x-if="small * 48.99 + medium * 78.99 + large * 114.99>title">
-                                    <p class="reply" style="color: red"> Insufficient funds</p>
+                                    <p class="reply" style="color: red"> Insufficient funds <br><br><button class="payBtn buyBtn" @click="small=0; medium=0; large=0; show=false; title=''">
+                                        Cancel Cart
+                                    </button></p>
+                                    
                                 </template> 
                                 <template x-if="small * 48.99 + medium * 78.99 + large * 114.99<=title">
                                     <p class="reply" style="color: rgb(36, 236, 36)" > Successful purchase, your change is: R<span
                                         x-text="(parseInt(title) - (small * 48.99 + medium * 78.99 + large * 114.99)).toFixed(2)"
-                                      ></span></p>
+                                      ></span><br><br><button class="payBtn buyBtn" @click="small=0; medium=0; large=0; show=false; title=''">
+                                        Clear Cart
+                                    </button></p></p>
                                 </template>
                             </div>
                             <div>
@@ -81,8 +86,8 @@
                             <button @click="show=!show" class="payBtn buyBtn">
                                 Pay
                             </button>
-                            <!-- <button @click="small=0; medium=0; large=0; show=false; title=''">
-                                Refresh
+                            <!-- <button class="payBtn buyBtn" @click="small=0; medium=0; large=0; show=false; title=''">
+                                Refresh Cart
                             </button> -->
                         </div>  
                     </div>
