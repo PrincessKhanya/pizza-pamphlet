@@ -72,7 +72,7 @@
                             </div>
                             <br>
                             <button @click="show=!show"  class="buyBtn" x-init="setTimeout(function() {
-                                small=0;medium=0;large=0;checkout=false;show=false;title=''
+                                location.reload();
                             }, 10000);">
                                 Pay
                             </button>  
@@ -83,9 +83,10 @@
                     Check out
                 </button>
             </div>
-            <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 3000)" class="bg-green-200 text-black mr-4 px-2" style="display: none;">
+            <!-- small=0;medium=0;large=0;checkout=false;show=false;title='' -->
+            <!-- <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 3000)" class="bg-green-200 text-black mr-4 px-2" style="display: none;">
                 Your personal information has been updated!  (1614715776)
-            </div>
+            </div> -->
 
         </div>
 
