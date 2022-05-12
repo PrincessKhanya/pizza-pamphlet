@@ -16,13 +16,6 @@
         </div>
         <div class="ShoppingCart box" x-show="small >= 1 || medium >= 1 || large >= 1">
             <h2>Shopping Cart</h2>
-            <!-- <div>
-                <span>Pizza Size</span>
-                <span x-text="Quantity"></span>
-                <span >Add Pizza</span>
-                <span >Remove Pizza</snap>
-                <span x-text="Total cost">Total cost</span>
-            </div> -->
             <div class="small" x-show="small >= 1">
                 <p>
                 <div>
@@ -59,23 +52,18 @@
             <div class="total">
                 <p>Total cost R<span x-text="(small * 48.99 + medium * 78.99 + large * 114.99).toFixed(2)">0.00</span></p>
             </div>
-            <div x-data="{ show: false }">
-                <div x-show.transition="show">
+            <div x-data="{ checkout: false }">
+                <div x-show.transition="checkout">
                     <div class="boxs"  x-data="{ title: '' }">
                         <div x-data="{ show: false }">
                             <div x-show.transition="show">
                                 <template x-if="small * 48.99 + medium * 78.99 + large * 114.99>title">
-                                    <p class="reply" style="color: red"> Insufficient funds <br><br><button class="payBtn buyBtn" @click="small=0; medium=0; large=0; show=false; title=''">
-                                        Cancel Cart
-                                    </button></p>
-                                    
+                                    <p class="reply" style="color: red"> Insufficient funds <br><br></p>
                                 </template> 
                                 <template x-if="small * 48.99 + medium * 78.99 + large * 114.99<=title">
                                     <p class="reply" style="color: rgb(36, 236, 36)" > Successful purchase, your change is: R<span
                                         x-text="(parseInt(title) - (small * 48.99 + medium * 78.99 + large * 114.99)).toFixed(2)"
-                                      ></span><br><br><button class="payBtn buyBtn" @click="small=0; medium=0; large=0; show=false; title=''">
-                                        Clear Cart
-                                    </button></p></p>
+                                      ></span><br><br></p></p>
                                 </template>
                             </div>
                             <div>
@@ -83,21 +71,20 @@
                                 <input   type="number" class="buyBtn" placeholder="Enter your amount" x-model="title">
                             </div>
                             <br>
-                            <button @click="show=!show" class="payBtn buyBtn">
+                            <button @click="show=!show"  class="buyBtn" x-init="setTimeout(function() {
+                                small=0;medium=0;large=0;checkout=false;show=false;title=''
+                            }, 10000);">
                                 Pay
-                            </button>
-                            <!-- <button class="payBtn buyBtn" @click="small=0; medium=0; large=0; show=false; title=''">
-                                Refresh Cart
-                            </button> -->
+                            </button>  
                         </div>  
                     </div>
                 </div>
-                <button @click="show=!show, event.target.style.display='none'" class="check">
+                <button @click="checkout=!checkout, event.target.style.display='none'" class="check">
                     Check out
                 </button>
             </div>
-            <div class="boxes">
-                
+            <div x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 3000)" class="bg-green-200 text-black mr-4 px-2" style="display: none;">
+                Your personal information has been updated!  (1614715776)
             </div>
 
         </div>
